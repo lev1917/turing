@@ -1,0 +1,59 @@
+__author__ = 'Home'
+author = 'student'
+def Y(A):
+   S=A.readline()
+   S=S.rstrip()
+
+   return S
+def input_machina(line=''):
+  q=open(line)
+  Tab={}
+  h=q.readline()
+  h=h.rstrip()
+  f=list(h.split(' '))
+  h=q.readline()
+  h=h.rstrip()
+  while h:
+
+    h=h.rstrip()
+    d=list(h.split(' '))
+    q_=d.pop(0)
+
+    Tab[q_]={}
+    for i in range(len(f)):
+        Tab[q_][f[i]]=eval(d[i])
+    h=q.readline()
+
+  return Tab
+def p_print(Lenta):
+  e=''
+  for i in range(0,len(Lenta)):
+    if Lenta[i]!='-':
+      e+=Lenta[i]
+  print(e)
+A=input()
+Pra=input_machina(A)
+A=input()
+S=open(A)
+
+Q_0=Y(S)
+Q_k=list(Y(S).split(' '))
+pos=int(Y(S).rstrip())-1
+U=Y(S)
+p_print(U)
+Lenta=list(i for i in U)
+
+Q_t=Q_0
+while Q_t not in Q_k:
+  u=Lenta[pos]
+  S=Pra[Q_t][str(u)]
+
+
+  Lenta[pos]=S[1]
+  if S[2]=='p':
+    pos+=1
+  elif S[2]=='f':
+    pos-=1
+
+  Q_t=S[0]
+p_print(Lenta)
